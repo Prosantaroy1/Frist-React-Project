@@ -1,18 +1,36 @@
 .product{
-    
     width: 300px;
     height: 500px;
     border: 1px solid gold;
-    margin: 9px 30px;
-
+    margin: 9px 25px;
+    position: relative;
 }
 .product img{
     width: 280px;
     height: 280px;
     padding: 10px;
 }
+.card-details{
+    padding: 10px;
+    line-height: 15px;
+}
 .title-name{
     font-size: 15px;
-    font-family: cursive;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bolder;
+}
+.price-title{
     font-weight: bold;
+}
+.btn-add{
+    width: 100%;
+    background-color: blueviolet;
+    padding: 5px;
+    font-size: 20px;
+    border: none;
+    position: absolute;
+    bottom: 0;
+}
+.btn-add:hover{
+    background-color: chartreuse;
 }
