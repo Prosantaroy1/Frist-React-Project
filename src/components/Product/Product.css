@@ -1,0 +1,18 @@
+.product{
+    
+    width: 300px;
+    height: 500px;
+    border: 1px solid gold;
+    margin: 9px 30px;
+
+}
+.product img{
+    width: 280px;
+    height: 280px;
+    padding: 10px;
+}
+.title-name{
+    font-size: 15px;
+    font-family: cursive;
+    font-weight: bold;
+}
