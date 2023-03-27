@@ -1,0 +1,7 @@
+.card{
+    padding: 20px;
+    font-size: 18px;
+    position: sticky;
+    top: 0;
+    background-color: aqua;
+}
