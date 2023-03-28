@@ -2,16 +2,18 @@ import React from 'react';
 import './Card.css'
 
 const Card = ({card}) => {
+   // console.log(card)
     //total set
     let totalPrice =0;
     let totalShipping =0;
     let qunatity = 0;
     for(const product of card){
+       // console.log(product)
         //product local
-        if(product.qunatity === 0){
-            product.qunatity= 1;
-        }
-        totalPrice =totalPrice + product.price*product.qunatity;
+        //if(product.qunatity === 0){
+            //product.qunatity= 1;
+        //}
+        totalPrice =totalPrice + product.price * product.qunatity;
         totalShipping = totalShipping + product.shipping;
         qunatity = qunatity + product.qunatity;
     }

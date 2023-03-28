@@ -16,24 +16,37 @@ const Shop = () => {
      //local storages
      useEffect(()=>{
         const storedCard = getShoppingCart();
-        const savedCart = [];
+        const savedCard = [];
         //console.log(storedCard);
         //step 1
         for(const id in storedCard){
             //step 2
-            const addedProduct = products.find(product => product.id===id);
+            const addedProduct = products.find(product => product.id === id);
             //step 3
             if(addedProduct){
                 const qunatity = storedCard[id];
                 addedProduct.qunatity = qunatity;
                 //step 4
-                savedCart.push(addedProduct);
+                savedCard.push(addedProduct);
             }
+            //step 5
+            setCard(savedCard);
         }
-     },[products])
-     
+     }, [products])
+
     const handleAddCard = (product)=>{
-        const newCard =[...card, product];
+       // const newCard =[...card, product];
+       let newCard = 0;
+       const exists = card.find(pd => pd.id === product.id);
+       if(!exists){
+         product.qunatity = 1;
+         newCard = [...card, product]
+       }
+       else{
+         exists.qunatity = exists.qunatity + 1;
+         const remaining = card.filter(pd => pd.id !== product.id);
+         newCard = [...remaining, exists]
+       }
         setCard(newCard);
         //console.log(newCard)
         addToDb(product.id)
