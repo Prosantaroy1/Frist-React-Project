@@ -1,0 +1,7 @@
+.reviewProducts{
+    display: grid;
+    grid-template-columns: 2fr;
+    margin: 50px auto;
+    justify-content: center;
+    align-items: center;
+}
