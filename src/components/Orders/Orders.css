@@ -5,3 +5,18 @@
     justify-content: center;
     align-items: center;
 }
+.btn-proceed{
+    width: 90%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 8px;
+    background-color: #c4f122;
+    color: rgb(241, 241, 241);
+}
+.proceed-link{
+    text-decoration: none;
+}

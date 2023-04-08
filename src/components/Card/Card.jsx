@@ -1,14 +1,16 @@
 import React from 'react';
 import './Card.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
-const Card = ({card}) => {
+const Card = ({card, handleClearcard, children}) => {
    // console.log(card)
     //total set
     let totalPrice =0;
     let totalShipping =0;
     let qunatity = 0;
     for(const product of card){
-       // console.log(product)
+       //console.log(product);
         //product local
         //if(product.qunatity === 0){
             //product.qunatity= 1;
@@ -27,6 +29,11 @@ const Card = ({card}) => {
             <p>Total Shipping: {totalShipping}</p>
             <p>Tax: {tax}</p>
             <h5>Grand Total: {GrandTotal.toFixed(2)}</h5>
+            <button className='clear-btn' onClick={handleClearcard}>
+                <span>Crear card</span>
+                <FontAwesomeIcon icon={faTrashAlt} />
+            </button>
+            {children}
         </div>
     );
 };

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Card from '../Card/Card';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import ReviewProducts from '../ReviewProducts/ReviewProducts';
 import './Orders.css'
 import { removeFromDb } from '../../utilities/fakedb';
+import { deleteShoppingCart } from '../../utilities/fakedb';
 
 const Orders = () => {
     const savedcard = useLoaderData();
@@ -13,6 +14,10 @@ const Orders = () => {
         const remaining = card.filter(product => product.id !==id);
         setCard(remaining);
         removeFromDb(id);
+    }
+    const handleClearcard = ()=>{
+        setCard([]);
+        deleteShoppingCart()
     }
     return (
         <div className='shop-container'>
@@ -26,7 +31,16 @@ const Orders = () => {
                 }
             </div>
             <div className='cart-container'>
-              <Card card={card}></Card>
+              <Card
+               card={card}
+               handleClearcard={handleClearcard}
+              >
+                <Link className='proceed-link' to='/cheekout'>
+                    <button className='btn-proceed'>
+                        Proceed Checkout
+                    </button>
+                </Link>
+              </Card>
             </div>
         </div>
     );
