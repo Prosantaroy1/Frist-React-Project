@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import './SignUp.css'
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const SignUp = () => {
     //error state
     const[error, setError]= useState('');
+    const {createUser}= useContext(AuthContext);
 
     const handleSignUp = event =>{
         event.preventDefault();
@@ -18,10 +21,21 @@ const SignUp = () => {
            setError('Your passsword did not match??') ;
             return
         }
-        else if(password.lenght < 6){
+        else if(password.length < 6){
             setError('your password must be 6 char??');
             return
         }
+        setError('');
+
+        createUser(email, password)
+        .then(result=>{
+            const logged= result.user;
+            console.log(logged);
+        })
+        .catch(error=>{
+            console.log(error);
+            setError(error.message);
+        })
     }
     return (
         <div className='form-container'>
@@ -33,11 +47,11 @@ const SignUp = () => {
                 </div>
                 <div className="form-control">
                     <label htmlFor="password">Password</label>
-                    <input type="password" name="password" id="" required/>
+                    <input type="password" name="password" id="" />
                 </div>
                 <div className="form-control">
                     <label htmlFor="confirm">confirm Password</label>
-                    <input type="password" name="confirm" id="" required/>
+                    <input type="password" name="confirm" id=""/>
                 </div>
                 <button className='btn-submit' type="submit">SignUp</button>
             </form>
