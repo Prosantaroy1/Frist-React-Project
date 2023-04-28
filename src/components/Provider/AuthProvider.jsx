@@ -9,13 +9,19 @@ const auth = getAuth(app);
 const AuthProvider = ({children}) => {
     //const user = {email: 'prosanta'};
     const[user, setUser]= useState(null);
-
+    ///loading set
+    const [loading, setLoading] = useState(true); 
+   ////Cretaed account/////
     const createUser =(email, password)=>{
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
     }
+   //////signup//
     const SignIn= (email, password)=>{
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
+    /////////////logout//
     const logOut =()=>{
         return signOut(auth)
     }
@@ -23,16 +29,20 @@ const AuthProvider = ({children}) => {
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, currentUser=>{
             setUser(currentUser);
+            setLoading(false);
         });
         return()=>{
             return unsubscribe();
         }
     },[])
+    ///////authinfo sob khane use korar jonno.//////
     const authInfo={
         user,
+        loading,
         createUser,
         SignIn,
-        logOut
+        logOut,
+        
     }
     return (
         <AuthContext.Provider value={authInfo}>
